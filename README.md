@@ -18,5 +18,7 @@ make
 
 ## использование
 0 - шифрование, 1 - дешифрование
+```bash
 ./cryptor 0 /path/to/your/folder/ password
 ./cryptor 0 /path/to/your/file password
+```
