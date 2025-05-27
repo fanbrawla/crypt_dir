@@ -8,5 +8,5 @@ find_package(OpenSSL REQUIRED)
 
 include_directories(${OPENSSL_INCLUDE_DIR}) 
 add_executable(cryptor main.cpp Crypt.cpp Aes256.cpp Scanner.cpp )
-
+target_compile_options(cryptor PRIVATE -Wno-deprecated-declarations)
 target_link_libraries(cryptor ${OPENSSL_LIBRARIES})

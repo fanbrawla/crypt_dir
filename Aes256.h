@@ -9,4 +9,4 @@ public:
     static bool encryptFile(const string& in, const string& pass);
     static bool decryptFile(const string& in, const string& pass);
 };
-#endif 
+#endif // AES256_H

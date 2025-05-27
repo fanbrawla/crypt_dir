@@ -42,14 +42,16 @@ void Scanner::recurse(const string& path, vector<string>& files) {
 }
 
 vector<string> Scanner::scan(const string& rootPath) {
-    cout << "scan: " << rootPath << endl;
     vector<string> resultFiles;
 
     struct stat rootStat;
-    if (stat(rootPath.c_str(), &rootStat) == -1 || !S_ISDIR(rootStat.st_mode)) {
-        return resultFiles;
+    if (stat(rootPath.c_str(), &rootStat) == -1) return resultFiles;
+
+    if (S_ISREG(rootStat.st_mode)) {
+        resultFiles.push_back(rootPath);
+    } else if (S_ISDIR(rootStat.st_mode)) {
+        recurse(rootPath, resultFiles);
     }
 
-    recurse(rootPath, resultFiles);
     return resultFiles;
 }
